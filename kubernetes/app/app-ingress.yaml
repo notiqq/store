@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: app-ingress
+  annotations:
+spec:
+  rules:
+  - host: online.store
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: client
+          servicePort: 8080
+      - path: /books
+        backend:
+          serviceName: server
+          servicePort: 5000
