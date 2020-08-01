@@ -18,9 +18,6 @@ def recreate_db():
 @cli.command('seed_db')
 def seed_db():
     """Seeds the database."""
-    db.session.add(User(username="michael", email="hermanmu@gmail.com", password="supersecret"))
-    db.session.add(User(username="michaelherman", email="michael@mherman.org", password="supersecret"))
-    
     db.session.add(Book(
         title='On the Road',
         author='Jack Kerouac',
