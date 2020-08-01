@@ -30,10 +30,16 @@ def all_books():
 
 @books_blueprint.route('/books/ping', methods=['GET'])
 def ping():
+    name = ''
+    try:
+        name = os.uname()[1]
+    except:
+        name = 'windows'
+
     return jsonify({
         'status': 'success',
         'message': 'pong!',
-        'container_id': os.uname()[1]
+        'container_id': name
     })
 
 
