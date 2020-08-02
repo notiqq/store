@@ -16,7 +16,7 @@ def all_products():
         name = post_data.get('name')
         price = post_data.get('price')
         category_id = post_data.get('category_id')
-        db.session.add(Product(title=name, author=price, read=category_id))
+        db.session.add(Product(name=name, price=price, category_id=category_id))
         db.session.commit()
     else:
         response_object['products'] = [product.to_json() for product in Product.query.all()]
