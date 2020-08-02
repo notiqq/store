@@ -1,7 +1,8 @@
 from flask.cli import FlaskGroup
 
 from project import create_app, db
-from project.api.models import Product
+from project.models.product import Product
+from project.models.category import Category
 
 
 app = create_app()
@@ -18,6 +19,10 @@ def recreate_db():
 @cli.command('seed_db')
 def seed_db():
     """Seeds the database."""
+    db.session.add(Category(name='Phones'))
+    db.session.add(Category(name='Tablets'))
+    db.session.add(Category(name='Laptops'))
+
     db.session.add(Product(
         name='iPhone 11',
         price=20,

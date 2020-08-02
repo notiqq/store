@@ -2,7 +2,7 @@ import os
 
 from flask import Blueprint, jsonify, request
 
-from project.api.models import Category
+from project.models.category import Category
 from project import db
 
 
