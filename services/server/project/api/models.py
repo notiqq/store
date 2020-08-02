@@ -31,7 +31,7 @@ class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(255), nullable=False)
     author = db.Column(db.String(255), nullable=False)
-    category_id = Column(db.Integer, ForeignKey('store.categories.id'), nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey('store.categories.id'), nullable=False)
 
     def __init__(self, name, price, category_id):
         self.name = title
