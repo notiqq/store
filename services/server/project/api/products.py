@@ -15,8 +15,9 @@ def all_products():
         post_data = request.get_json()
         name = post_data.get('name')
         price = post_data.get('price')
+        image_url = post_data.get('image_url')
         category_id = post_data.get('category_id')
-        db.session.add(Product(name=name, price=price, category_id=category_id))
+        db.session.add(Product(name=name, price=price, image_url = image_url, category_id=category_id))
         db.session.commit()
     else:
         response_object['products'] = [product.to_json() for product in Product.query.all()]
@@ -38,6 +39,7 @@ def single_product(product_id):
         post_data = request.get_json()
         product.name = post_data.get('name')
         product.price = post_data.get('price')
+        product.image_url = post_data.get('image_url')
         product.category_id = post_data.get('category_id')
         db.session.commit()
     if request.method == 'DELETE':
