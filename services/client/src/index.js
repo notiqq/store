@@ -1,12 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./Redux/Store";
 
-import App from "./App.jsx";
-
-ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
-  document.getElementById("root")
+let app = (
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>
 );
+
+window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
+
+ReactDOM.render(app, document.getElementById("root"));
